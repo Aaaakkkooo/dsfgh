@@ -1,0 +1,235 @@
+:root {
+    --background-color: #f5f7fa;
+    --text-color: #333;
+    --primary-color: linear-gradient(90deg, #ff7eb3, #ff758c);
+    --secondary-color: #6c757d;
+    --accent-color: #ffe0e6;
+    --border-radius: 12px;
+    --box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    --background-color: #1e1e2f;
+    --text-color: #f8f9fa;
+    --primary-color: linear-gradient(90deg, #1a73e8, #5a5feb);
+    --secondary-color: #888;
+    --accent-color: #2b2b3f;
+    --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.container {
+    margin-top: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-control, .btn {
+    border-radius: var(--border-radius);
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    box-shadow: var(--box-shadow);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.1);
+    transform: scale(1.05);
+}
+
+.top-bar {
+    box-shadow: var(--box-shadow);
+    background-color: var(--background-color);
+    padding: 10px;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.item {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--accent-color);
+    opacity: 0.1;
+    z-index: 1;
+}
+
+.item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    z-index: 2;
+}
+
+.item:hover img {
+    transform: scale(1.05);
+}
+
+.item-content {
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.item-content h3 {
+    font-size: 20px;
+    margin: 0 0 10px;
+    color: var(--text-color);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.item-content p {
+    font-size: 14px;
+    color: var(--secondary-color);
+}
+
+.filters {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.filters select {
+    border-radius: var(--border-radius);
+    transition: all 0.3s;
+    box-shadow: var(--box-shadow);
+    background: var(--background-color);
+}
+
+.filters select:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.filters select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-fit: cover;
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.fixed-contact {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.fixed-contact:hover {
+    filter: brightness(1.2);
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .filters {
+        flex-direction: column;
+    }
+
+    .item img {
+        height: 150px;
+    }
+}
+.favorite-btn {
+    display: inline-block;
+    margin-top: 10px;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-modal {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
